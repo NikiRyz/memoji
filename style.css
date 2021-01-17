@@ -39,16 +39,22 @@ main {
     animation: open-card 0.2s linear forwards;
 }
 
+
 @keyframes open-card {
     0% {
         font-size: 0;
         transform: rotateY(180deg);
-        background: linear-gradient(45deg, #22AB93, #19668D);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
     }
     50% {
+        font-size: 0;
+    }
+    51% {
         font-size: 75px;
     }
     100% {
+        font-size: 75px;
         background: white;
     }
+   
 }
