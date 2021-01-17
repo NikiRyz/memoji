@@ -34,3 +34,21 @@ main {
     user-select: none;
     /* определяет может ли пользователь выбрать текст */
 }
+
+.open {
+    animation: open-card 0.2s linear forwards;
+}
+
+@keyframes open-card {
+    0% {
+        font-size: 0;
+        transform: rotateY(180deg);
+        background: linear-gradient(45deg, #22AB93, #19668D);
+    }
+    50% {
+        font-size: 75px;
+    }
+    100% {
+        background: white;
+    }
+}
