@@ -22,8 +22,15 @@ main {
 
 .card {
     font-size: 0;
+    margin: 25px;
     width: 130px;
     height: 130px;
-    margin: 25px;
-    background: red;
+    background: linear-gradient(45deg, #22AB93, #19668D);
+    box-sizing: border-box;
+    border: 5px solid white;
+    border-radius: 9px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    user-select: none;
+    /* определяет может ли пользователь выбрать текст */
 }
