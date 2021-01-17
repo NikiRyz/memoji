@@ -38,7 +38,9 @@ main {
 .open {
     animation: open-card 0.2s linear forwards;
 }
-
+.close {
+    animation: close-card 0.2s linear;
+}
 
 @keyframes open-card {
     0% {
@@ -57,4 +59,21 @@ main {
         background: white;
     }
    
+}
+@keyframes close-card {
+    0% {
+        background: white;
+        font-size: 75px;
+    }
+    50% {
+        font-size: 75px;
+    }
+    51% {
+        font-size: 0;
+    }
+    100% {
+        background: linear-gradient(-45deg, #22AB93, #19668D);
+        font-size: 0;
+        transform: rotateY(180deg);
+    }
 }
