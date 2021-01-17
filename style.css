@@ -12,3 +12,18 @@ header {
     display: flex;
     justify-content: center;
 }
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 720px;
+    margin: auto;
+}
+
+.card {
+    font-size: 0;
+    width: 130px;
+    height: 130px;
+    margin: 25px;
+    background: red;
+}
