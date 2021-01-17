@@ -1,0 +1,14 @@
+body {
+    background-color: #CFD0CF;
+}
+
+header {
+    font-family: Arial;
+    font-weight: bold;
+    color: #434344;
+    line-height: 47px;
+    font-size: 42px;
+    margin: 40px auto 40px auto;
+    display: flex;
+    justify-content: center;
+}
