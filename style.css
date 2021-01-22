@@ -14,39 +14,60 @@ header {
 }
 
 main {
-    display: flex;
-    flex-wrap: wrap;
-    width: 720px;
-    margin: auto;
+    display: grid;
+    grid-template-rows: repeat(3, 130px);
+    grid-template-columns: repeat(4, 130px);
+    grid-gap: 25px;
+    justify-content: center;
 }
 
 .card {
-    font-size: 0;
-    margin: 25px;
-    width: 130px;
-    height: 130px;
     background: linear-gradient(45deg, #22AB93, #19668D);
     box-sizing: border-box;
     border: 5px solid white;
     border-radius: 9px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
+    font-size: 0;
     user-select: none;
-    /* определяет может ли пользователь выбрать текст */
+    transform: perspective(600px);
+    perspective: 600px;
 }
 
 .open {
     animation: open-card 0.2s linear forwards;
 }
+
 .close {
     animation: close-card 0.2s linear;
+}
+
+.open-wrong {
+    animation: open-wrong 0.2s linear forwards;
+}
+
+.open-success {
+    animation: open-success 0.2s linear forwards;
+}
+
+.wrong {
+    border-color: #F44336;
+    background: #F44336 !important;
+    font-size: 75px;
+}
+
+.success {
+    border-color: #5AD66F;
+    background: #5AD66F !important;
+    font-size: 75px;
 }
 
 @keyframes open-card {
     0% {
         font-size: 0;
         transform: rotateY(180deg);
-        background: linear-gradient(45deg, #22AB93, #19668D);
+        -webkit-transform: rotateY(180deg);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
     }
     50% {
         font-size: 0;
@@ -58,8 +79,8 @@ main {
         font-size: 75px;
         background: white;
     }
-   
 }
+
 @keyframes close-card {
     0% {
         background: white;
@@ -72,8 +93,48 @@ main {
         font-size: 0;
     }
     100% {
-        background: linear-gradient(45deg, #22AB93, #19668D);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
         font-size: 0;
         transform: rotateY(180deg);
+    }
+}
+
+@keyframes open-success {
+    0% {
+        font-size: 0;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
+    }
+    50% {
+        font-size: 0;
+    }
+    51% {
+        font-size: 75px;
+    }
+    100% {
+        font-size: 75px;
+        border-color: #5AD66F;
+        background: #5AD66F;
+    }
+}
+
+@keyframes open-wrong {
+    0% {
+        font-size: 0;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
+    }
+    50% {
+        font-size: 0;
+    }
+    51% {
+        font-size: 75px;
+    }
+    100% {
+        font-size: 75px;
+        border-color: #F44336;
+        background: #F44336;
     }
 }
