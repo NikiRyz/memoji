@@ -64,4 +64,32 @@ class GameProcess {
     getId(){
         return this.id
     }
+    checkCards(card) {
+        //ищем открытые карточки
+        const findOpenCard = this.cardsList.find((x) => x.getStatus() === enumStatus.OPEN);
+        //если нашли
+        if (findOpenCard) {
+          //проверяем одинаковые ли id у карточек
+          const isCouple = card.getId() === findOpenCard.getId();
+          //если одинаковые - устанавливаем статус success
+          if (isCouple) {
+            findOpenCard.success();
+            card.success(true);
+          }
+          //если разные - устанавливаем статус wrong
+          else {
+            findOpenCard.wrong();
+            card.wrong(true);
+          }
+        }
+        //если не нашли открытую карточку - открываем
+        else {
+          card.open();
+        }
+      }
+      closeWrong() {
+        this.cardsList
+          .filter((x) => x.getStatus() === enumStatus.WRONG)
+          .forEach((x) => x.close());
+      }
   }
