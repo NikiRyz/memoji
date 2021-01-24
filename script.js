@@ -17,9 +17,14 @@
     }
       coupleEmoji(emojiList) {
       const arr = emojiList.map((emoji, id) => ({
-        emoji, id,
+        emoji:emoji, id:id,
       }));
       return arr.concat(arr);
     }
-           
+    initCards(){
+        this.shuffleEmoji();
+    }  
+    shuffleEmoji(){
+        this.emojiList = this.emojiList.sort(() => Math.random() - 0.5);
+    } 
   }
