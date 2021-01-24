@@ -1,3 +1,10 @@
+const enumStatus = {
+    CLOSE: 'close',
+    OPEN: 'open',
+    SUCCESS: 'success',
+    WRONG: 'wrong',
+  };
+
 class GameProcess {
     constructor({ emojiList, cardsField, cardElems }) {
           //создаем массив парных изображений
@@ -50,5 +57,11 @@ class GameProcess {
       this.id = id;
       this.status = enumStatus.CLOSE;
       this.node.textContent = emoji;
+    }
+    getStatus(){
+        return this.status
+    }
+    getId(){
+        return this.id
     }
   }
