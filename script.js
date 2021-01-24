@@ -92,4 +92,10 @@ class GameProcess {
           .filter((x) => x.getStatus() === enumStatus.WRONG)
           .forEach((x) => x.close());
       }
+      addClass(name){
+          this.node.classList.add(name)
+      }
+      removeClass(name){
+          this.node.classList.remove(name)
+      }
   }
