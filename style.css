@@ -42,6 +42,7 @@ main {
     animation: close-card 0.2s linear;
 }
 
+
 @keyframes open-card {
     0% {
         font-size: 0;
