@@ -64,7 +64,7 @@ class GameProcess {
     this.cardsList = [];
     this.timerNode=timerNode;
     this.alertNode = alertNode;
-    this.timerOpts={seconds: 60,};
+    this.timerOpts={seconds: 1,};
    this.init();
   }
 
@@ -99,6 +99,20 @@ initTimer(){
     }
   }, 1000);
 }
+endGame(win){
+  clearInterval(this.timerId)
+  const status = win? 'win':'lose';
+  const btnText = win? 'Играть снова':'Попробовать снова';
+  this.alertNode.querySelector('.alert__button').textContent=btnText;
+  this.alertNode.querySelector(`.${status}`).classList.remove('invisible')
+  this.alertNode.classList.remove('invisible')
+}
+restartGame(){
+  this.cardsList.forEach((card)=>card.close());
+  this.initCards();
+  this.setTime(this.timerOpts.seconds);
+  this.clearContext();
+}
   initEvents() {
     //обрабатываем клик в cards
     this.cardsField.addEventListener('click', ({ target }) => {
@@ -112,6 +126,7 @@ initTimer(){
         }
       }
     });
+    this.alertNode.querySelector('.alert__button').addEventListener('click', ()=>this.restartGame())
   }
  
  
