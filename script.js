@@ -134,5 +134,6 @@ const enumStatus = {
     const emojiList = '🐞 🦀 🐟 🐊 🐓 🦃'.split(' ');
     const cardsField = document.querySelector('.cards');
     const cardElems = Array.from(cardsField.querySelectorAll('.card'));
-    new GameProcess({ emojiList, cardsField, cardElems });
+    const timerNode = document.querySelector('.timer');
+    new GameProcess({ emojiList, cardsField, cardElems, timerNode });
   }());
