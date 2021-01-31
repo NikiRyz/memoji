@@ -57,12 +57,13 @@ class Card {
 
 
 class GameProcess {
-  constructor({ emojiList, cardsField, cardElems,timerNode }) {
+  constructor({ emojiList, cardsField, cardElems,timerNode, alertNode }) {
     this.emojiList = this.coupleEmoji(emojiList);
     this.cardsField = cardsField;
     this.cardElems = cardElems;
     this.cardsList = [];
     this.timerNode=timerNode;
+    this.alertNode = alertNode;
     this.timerOpts={seconds: 60,};
    this.init();
   }
@@ -71,6 +72,14 @@ class GameProcess {
     this.initCards();
     this.initEvents();
     this.setTime(this.timerOpts.seconds);
+    this.clearContext();
+  }
+  clearContext(){
+    this.gameStarted= false;
+    ['win','lose'].forEach((i)=>{
+      this.alertNode.querySelector(`.${i}`).classList.add('invisible');
+    })
+    this.alertNode.classList.add('invisible');
   }
   initCards() {
     this.shuffleEmoji();
@@ -79,6 +88,16 @@ class GameProcess {
   }
   setTime(seconds) {
     this.timerNode.textContent = secondsToTime(seconds);
+}
+initTimer(){
+  let {seconds} = this.timerOpts;
+  this.timerId = setInterval(() => {
+    seconds--;
+    this.setTime(seconds);
+    if(!seconds){
+      this.endGame(false);
+    }
+  }, 1000);
 }
   initEvents() {
     //обрабатываем клик в cards
@@ -109,6 +128,10 @@ class GameProcess {
 
 
   checkCards(card) {
+    if(!this.gameStarted){
+      this.gameStarted=true;
+      this.initTimer();
+    }
     //ищем открытые карточки
     const findOpenCard = this.cardsList.find((x) => x.getStatus() === enumStatus.OPEN);
     //если нашли
@@ -145,7 +168,8 @@ class GameProcess {
   const cardsField = document.querySelector('.cards');
   const cardElems = Array.from(cardsField.querySelectorAll('.card'));
   const timerNode = document.querySelector('.timer');
-  new GameProcess({ emojiList, cardsField, cardElems, timerNode });
+  const alertNode = document.querySelector('.alert')
+  new GameProcess({ emojiList, cardsField, cardElems, timerNode,alertNode });
 }());
 
 function secondsToTime(s) {
