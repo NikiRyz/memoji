@@ -41,7 +41,24 @@ main {
 .close {
     animation: close-card 0.2s linear;
 }
+.wrong {
+    border-color: #F44336;
+    background: #F44336 !important;
+    font-size: 75px;
+}
 
+.success {
+    border-color: #5AD66F;
+    background: #5AD66F !important;
+    font-size: 75px;
+}
+.open-wrong {
+    animation: open-wrong 0.2s linear forwards;
+}
+
+.open-success {
+    animation: open-success 0.2s linear forwards;
+}
 
 @keyframes open-card {
     0% {
@@ -76,5 +93,44 @@ main {
         background: linear-gradient(45deg, #22AB93, #19668D);
         font-size: 0;
         transform: rotateY(180deg);
+    }
+}
+@keyframes open-wrong {
+    0% {
+        font-size: 0;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
+    }
+    50% {
+        font-size: 0;
+    }
+    51% {
+        font-size: 75px;
+    }
+    100% {
+        font-size: 75px;
+        border-color: #F44336;
+        background: #F44336;
+    }
+}
+
+@keyframes open-success {
+    0% {
+        font-size: 0;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        background: linear-gradient(-45deg, #22AB93, #19668D);
+    }
+    50% {
+        font-size: 0;
+    }
+    51% {
+        font-size: 75px;
+    }
+    100% {
+        font-size: 75px;
+        border-color: #5AD66F;
+        background: #5AD66F;
     }
 }
